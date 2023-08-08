@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Book>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Kitabın Resmi</th>
+            <th scope="col">Kitap Adı</th>
+            <th scope="col">Yazar</th>
+            <th scope="col">Kitap nerede?</th>
+            <th scope="col">Ödünç alan öğrenci</th>
+            <th scope="col">Geri Getirme Tarihi</th>
+            <th scope="col">Ödünç ver / Geri Al</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <th scope="row">@book.Id</th>
+                <td><img src="~/@book.ImageUrl" width="75px" height="100px" /></td>
+                <td>@book.BookName</td>
+                <td>@book.BookAuthor</td>
+                @if (book.IsInLibrary)
+                {
+                    <td class="bg-warning">
+                        Kütüphanede
+                    </td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td><a href="/oduncver/index/@book.Id" class="btn btn-primary">Ödünç ver</a></td>
+                }
+                else
+                {
+                    <td class="bg-success">
+                        Öğrencide
+                    </td>
+                    <td>@await Component.InvokeAsync("GetStudentComponent",new{id=book.StudentId})</td>
+                    <td>@book.Deadline</td>
+                    <td>
+                        <button onclick="showModal(@book.Id)" class="btn btn-outline-primary modal_button">Geri Al</button>
+                        @*<a href="/oduncver/gerial/@book.Id" class="btn btn-outline-primary">Geri Al</a>*@
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+

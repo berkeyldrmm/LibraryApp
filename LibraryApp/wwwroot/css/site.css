@@ -16,3 +16,13 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+th, td{
+    text-align:center;
+    align-content:center;
+}
+
+.form-group{
+    margin-top:15px;
+    margin-bottom:15px;
+}

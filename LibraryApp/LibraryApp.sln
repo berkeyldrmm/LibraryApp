@@ -4,12 +4,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryApp", "LibraryApp.csproj", "{7C3AF210-3A56-4F96-9AC8-C10DADFB136B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1DDD3FCB-F5DA-4BB5-B3C2-4FABD52491BE} = {1DDD3FCB-F5DA-4BB5-B3C2-4FABD52491BE}
+		{E456326A-D74C-41DD-AAFD-20D00C7F3980} = {E456326A-D74C-41DD-AAFD-20D00C7F3980}
+		{E6CD663E-D3FB-4717-9B5D-3A729D167BAF} = {E6CD663E-D3FB-4717-9B5D-3A729D167BAF}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "..\DataAccessLayer\DataAccessLayer.csproj", "{1DDD3FCB-F5DA-4BB5-B3C2-4FABD52491BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityLayer", "..\EntityLayer\EntityLayer.csproj", "{E6CD663E-D3FB-4717-9B5D-3A729D167BAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "..\BusinessLayer\BusinessLayer.csproj", "{E456326A-D74C-41DD-AAFD-20D00C7F3980}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1DDD3FCB-F5DA-4BB5-B3C2-4FABD52491BE} = {1DDD3FCB-F5DA-4BB5-B3C2-4FABD52491BE}
+		{E6CD663E-D3FB-4717-9B5D-3A729D167BAF} = {E6CD663E-D3FB-4717-9B5D-3A729D167BAF}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,5 +13,9 @@ namespace EntityLayer
         public string BookAuthor { get; set; }
         public string ImageUrl { get; set; }
         public bool IsInLibrary { get; set; }
+        //Kitap, kütüphanede kalabileceği için aşağıdaki property'ler nullable olarak belirlenmiştir.
+        public int? StudentId { get; set; }
+        public Student? Student { get; set; }
+        public DateTime? Deadline { get; set; }
     }
 }

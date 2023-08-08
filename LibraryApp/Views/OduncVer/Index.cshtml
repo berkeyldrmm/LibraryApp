@@ -1,0 +1,83 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Ödünç verme sayfası";
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="~/css/style.css">
+    
+</head>
+<body>
+    <a href="/" class="btn btn-warning" id="back-to-index">
+        Ana ekrana dön
+    </a>
+    <div class="container">
+                @if (ViewBag.error != null)
+                {
+                    <div class="alert-danger">
+                        @ViewBag.error
+                    </div>
+                }
+                else
+                {
+                    <div class="form">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="~/@ViewBag.book.ImageUrl">
+                            <div class="card-body">
+                                <h5 class="card-title">@ViewBag.book.BookName - @ViewBag.book.BookAuthor</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form" id="form">
+                        @if (TempData["newstudenterror"] != null)
+                        {
+                            <div class="alert-danger">
+                                @TempData["newstudenterror"]
+                            </div>
+                        }
+                        <header>Yeni öğrenci</header>
+                        <form asp-controller="oduncver" asp-action="newstudent" method="post">
+                            <input type="hidden" name="bookId" value="@ViewBag.book.Id" />
+                            <span asp-validation-for="NameSurname"></span><br>
+                            <label asp-for="NameSurname">Öğrencinin adı soyadı*</label><br>
+                            <input type="text" asp-for="NameSurname" placeholder="Adı Soyadı">
+                            <span asp-validation-for="Email"></span><br>
+                            <label asp-for="Email">Öğrencinin mail adresi*</label><br>
+                            <input type="email" asp-for="Email" placeholder="Mail Adresi">
+                            <span asp-validation-for="PhoneNumber"></span><br>
+                            <label asp-for="PhoneNumber">Öğrencinin telefon numarası (zorunlu değil)</label><br>
+                            <input type="text" asp-for="PhoneNumber" placeholder="Telefon numarası">
+                            <label for="date">Kitabı geri getireceği tarih</label><br>
+                            <input type="datetime-local" name="date" />
+                            <input type="submit" class="button" value="Ödünç ver">
+                        </form>
+                    </div>
+                    <div class="form h-100">
+                        @if (TempData["error"] != null)
+                        {
+                            <div class="alert-danger">
+                                @TempData["error"]
+                            </div>
+                        }
+                        <header>Kayıtlı öğrenci</header>
+                        <form asp-controller="oduncver" asp-action="registeredstudent" method="post">
+                            <input type="hidden" name="bookId" value="@ViewBag.book.Id" />
+                            <label for="email">Öğrencinin mail adresi*</label><br>
+                            <input type="email" name="email" placeholder="Öğrencinin mail adresi">
+                            <label for="date">Kitabı geri getireceği tarih</label><br>
+                            <input type="datetime-local" name="date" />
+                            <input type="submit" class="button" value="Ödünç ver">
+                        </form>
+                    </div>
+                }
+        </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
